@@ -1,16 +1,30 @@
 <template>
     <div class={generateMessageBubbleClassname}>
-        <!-- <template if:true={isProductRecommendations}> -->
+        <template if:true={isProductRecommendations}>
             <c-product-recommendation-grid-message-component
-                products={productData}
-                product-header-text={productHeaderText}
-                category-header-text={categoryHeaderText}
-                categories={categoryData}
+                product-data={productData}
+                product-description={productDescription}
+                category-data={categoryData}
+                category-description={categoryDescription}
                 onaddtocart={handleAddToCart}>
             </c-product-recommendation-grid-message-component>
-        <!-- </template> -->
-        <!-- <template if:false={isProductRecommendations}>
+        </template>
+        <template if:false={isProductRecommendations}>
             <lightning-formatted-rich-text value={textContent}></lightning-formatted-rich-text>
-        </template> -->
+        </template>
+
+        <template if:true={isProductDetails}>
+            <c-commerce-product-details
+                product={productDetails}
+                onaddtocart={handleAddToCart}>
+            </c-commerce-product-details>
+        </template>
+
+        <template if:true={isProductVariants}>
+            <c-product-variants
+                product-variants={productVariants}
+                onvariantselection={handleVariantSelection}>
+            </c-product-variants>
+        </template>
     </div>
 </template>
