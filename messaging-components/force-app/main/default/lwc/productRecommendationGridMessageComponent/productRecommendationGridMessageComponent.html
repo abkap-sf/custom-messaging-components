@@ -1,6 +1,41 @@
 <template>
-    <div class="product-list">
-        <template for:each={products} for:item="product" for:index="index">
+    <div class="product-list slds-grid slds-gutters slds-grid_vertical">
+        <div class="slds-col">
+            <p><lightning-formatted-text value={productHeaderText}></lightning-formatted-text></p>
+        </div>
+        <template class="slds-col" for:each={products} for:item="product">
+            <div class="slds-grid slds-gutters" key={product.name}>
+                <div class="slds-col">
+                    <img src={product.imageUrl} alt={product.name} class="product-image" />    
+                </div>
+                <div class="slds-col slds-grid slds-gutters slds-grid_vertical">
+                    <div class="slds-col">
+                        <h3><lightning-formatted-text value={product.name}></lightning-formatted-text></h3>
+                    </div>
+                    <div class="slds-col">
+                        <p><lightning-formatted-text value={product.description}></lightning-formatted-text></p>
+                    </div>
+                    <div class="slds-col slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <p class="slds-float_left"><lightning-formatted-number value={product.price} format-style="currency" currency-code="USD"></lightning-formatted-number></p>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-button variant="brand" label="Add to Cart" title="Add to Cart" onclick={handleAddToCart} class="slds-float_right"></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <div class="slds-col">
+            <p><lightning-formatted-text value={categoryHeaderText}></lightning-formatted-text></p>
+            <template for:each={categories} for:item="category">
+                <div class="slds-grid slds-gutters slds-col" key={category.id}>
+                    <lightning-button variant="brand" label={category.name} title={category.name} onclick={handleAddToCart}></lightning-button>
+                </div>
+            </template>
+        </div>
+
+        <!-- <template for:each={products} for:item="product" for:index="index">
             <div key={product.name} class="product-item">
                 <img src={product.cartLink} alt={product.name} class="product-image" />
 
@@ -14,6 +49,6 @@
                     <button class="buy-button" data-index={index} onclick={handleAddToCart}>BUY</button>
                 </div>
             </div>
-        </template>
+        </template> -->
     </div>
 </template>

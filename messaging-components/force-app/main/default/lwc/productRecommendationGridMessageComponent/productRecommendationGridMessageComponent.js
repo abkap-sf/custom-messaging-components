@@ -2,6 +2,9 @@ import { LightningElement, api } from 'lwc';
 
 export default class ProductRecommendationGridMessageComponent extends LightningElement {
     @api products = [];
+    @api productHeaderText = '';
+    @api categoryHeaderText = '';
+    @api categories = [];
 
     handleAddToCart(event) {
         const index = event.target.dataset.index;
@@ -12,5 +15,10 @@ export default class ProductRecommendationGridMessageComponent extends Lightning
                 detail: { product }
             }));
         }
+    }
+
+    handleCategorySelection(event) {
+        const index = event.detail;
+        console.log('category: ', index);
     }
 }
