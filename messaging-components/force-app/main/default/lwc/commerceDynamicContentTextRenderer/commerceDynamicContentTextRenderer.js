@@ -24,8 +24,6 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
   productDescription = '';
   categoryData = [];
   categoryDescription = '';
-  productVariants = [];
-  productDetails = {};
   entryPayload = {};
   staticText;
   
@@ -35,8 +33,6 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
     this.productDescription = '';
     this.categoryData = [];
     this.categoryDescription = '';
-    this.productVariants = [];
-    this.productDetails = {};
     this.entryPayload = {};
     this.staticText = undefined;
     this.parsedText = '';
@@ -72,12 +68,6 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
         this.categoryData = this.parsedText.categoryDetails.categories;
         this.categoryDescription = this.parsedText.categoryDetails.description;
       }
-      if (this.isProductDetails && this.parsedText?.details) {
-        this.productDetails = this.parsedText.details;
-      }
-      if (this.isProductVariants && this.parsedText?.details) {
-        this.productVariants = this.parsedText.details;
-      }
     } catch (error) {
       console.error('Failed to process entryPayload:', error);
     }
@@ -89,14 +79,6 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
 
   get isProductRecommendations() {
     return this.contentType === 'productRecommendations';
-  }
-
-  get isProductVariants() {
-    return this.contentType === 'variant';
-  }
-
-  get isProductDetails() {
-    return this.contentType === 'productDetails';
   }
 
   handleAddToCart(event) {
@@ -117,20 +99,10 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
     }
   }
 
-  handleVariantSelection(event) {
-    const { name, option } = event?.detail;
-    console.log('name & option::::', name, option);
-    if (name && option) {
-      this.configuration.util.sendTextMessage(
-        `${name} Option in ${option}`
-      );
-    }
-  }
-
-   /**
-    * Returns the class name of the message bubble.
-    * @returns {string}
-    */
+  /**
+   * Returns the class name of the message bubble.
+   * @returns {string}
+   */
    get generateMessageBubbleClassname() {
     if (this.isSupportedSender()) {
       return `${MESSAGE_CONTENT_CLASS} ${this.sender}`;
