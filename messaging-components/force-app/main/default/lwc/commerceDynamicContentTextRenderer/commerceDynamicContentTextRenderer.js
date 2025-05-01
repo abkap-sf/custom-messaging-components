@@ -28,8 +28,6 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
   productDetails = {};
   entryPayload = {};
   staticText;
-  product = '';
-  category = '';
   
   processEntryPayload() {
     this.contentType = '';
@@ -102,19 +100,19 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
   }
 
   handleAddToCart(event) {
-    this.product = event?.detail;
+    const product = event?.detail;
     if (product) {
       this.configuration.util.sendTextMessage (
-        `Add ${this.product} to cart`
+        `Add ${product} to cart`
       );
     }
   }
 
   handleSelectCategory(event) {
-    this.category = event?.detail;
+    const category = event?.detail;
     if(category) {
       this.configuration.util.sendTextMessage (
-        `Show ${this.product} in ${this.category}`
+        `Show more ${category}`
       );
     }
   }
