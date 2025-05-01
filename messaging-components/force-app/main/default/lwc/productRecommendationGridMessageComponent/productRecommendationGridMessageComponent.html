@@ -20,7 +20,7 @@
                             <strong><lightning-formatted-number value={product.price} format-style="currency" currency-code="USD" class="slds-float_left product-price"></lightning-formatted-number></strong>
                         </div>
                         <div class="slds-col">
-                            <button title="Add to Cart" onclick={handleAddToCart} class="slds-float_right add-to-cart">Add to Cart</button>
+                            <button title="Add to Cart" onclick={handleAddToCart} name={product.name} class="slds-float_right add-to-cart">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
             <div class="slds-grid slds-wrap"> 
                 <template for:each={categoryData} for:item="category">
                     <div class="slds-col" key={category.id}>
-                        <button title={category.name} onclick={handleAddToCart} class="category-button">{category.name}</button>
+                        <button name={category.name} onclick={handleSelectCategory} class="category-button">{category.name}</button>
                     </div>
                 </template>
             </div>
