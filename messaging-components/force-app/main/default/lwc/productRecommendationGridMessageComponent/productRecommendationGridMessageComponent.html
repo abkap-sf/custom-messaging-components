@@ -1,54 +1,40 @@
 <template>
-    <div class="slds-grid slds-gutters slds-grid_vertical">
-        <div class="slds-col">
-            <lightning-formatted-rich-text value={productDescription}></lightning-formatted-rich-text>
+    <div class="slds-grid slds-grid_vertical">
+        <div class="slds-col slds-m-bottom_xx-small">
+            <lightning-formatted-rich-text value={productDescription} class="product-description"></lightning-formatted-rich-text>
         </div>
         <template class="slds-col" for:each={productData} for:item="product">
-            <div class="product-list slds-grid slds-gutters product-card" key={product.name}>
+            <div class="slds-grid product-card slds-m-bottom_x-small" key={product.name}>
                 <div class="slds-col slds-size_2-of-5">
                     <img src={product.imageUrl} alt={product.name} class="product-image"/>    
                 </div>
-                <div class="slds-col slds-size_3-of-5 slds-grid slds-gutters slds-grid_vertical">
+                <div class="slds-col slds-size_3-of-5 slds-grid slds-grid_vertical slds-m-left_xx-small">
                     <div class="slds-col">
-                        <strong><lightning-formatted-rich-text value={product.name}></lightning-formatted-rich-text></strong>
+                        <strong><lightning-formatted-rich-text value={product.name} class="product-name"></lightning-formatted-rich-text></strong>
                     </div>
-                    <div class="slds-col">
-                        <lightning-formatted-rich-text value={product.description}></lightning-formatted-rich-text>
+                    <div class="slds-col slds-m-right_x-small">
+                        <lightning-formatted-rich-text value={product.description} class="product-detail"></lightning-formatted-rich-text>
                     </div>
-                    <div class="slds-col slds-grid slds-gutters">
-                        <div class="slds-col slds-size_2-of-5">
-                            <strong><lightning-formatted-number value={product.price} format-style="currency" currency-code="USD" class="slds-float_left"></lightning-formatted-number></strong>
+                    <div class="slds-col slds-grid slds-m-top_xx-small slds-m-right_x-small slds-m-bottom_xx-small">
+                        <div class="slds-col">
+                            <strong><lightning-formatted-number value={product.price} format-style="currency" currency-code="USD" class="slds-float_left product-price"></lightning-formatted-number></strong>
                         </div>
-                        <div class="slds-col slds-size_3-of-5">
-                            <lightning-button variant="brand" label="Add to Cart" title="Add to Cart" onclick={handleAddToCart} class="slds-float_right cart-button"></lightning-button>
+                        <div class="slds-col">
+                            <button title="Add to Cart" onclick={handleAddToCart} class="slds-float_right add-to-cart">Add to Cart</button>
                         </div>
                     </div>
                 </div>
             </div>
         </template>
-        <div class="slds-col">
-            <lightning-formatted-rich-text value={categoryDescription}></lightning-formatted-rich-text>
-            <template for:each={categoryData} for:item="category">
-                <div class="slds-grid slds-gutters slds-wrap slds-col" key={category.id}>
-                    <lightning-button variant="brand" label={category.name} title={category.name} onclick={handleAddToCart} class="category-button"></lightning-button>
-                </div>
-            </template>
-        </div>
-
-        <!-- <template for:each={products} for:item="product" for:index="index">
-            <div key={product.name} class="product-item">
-                <img src={product.cartLink} alt={product.name} class="product-image" />
-
-                <div class="product-info">
-                    <h3 class="product-name">{product.name}</h3>
-                    <p class="product-description">{product.description}</p>
-                </div>
-
-                <div class="product-action">
-                    <p class="product-price">${product.price}</p>
-                    <button class="buy-button" data-index={index} onclick={handleAddToCart}>BUY</button>
-                </div>
+        <div class="slds-col" lwc:if={categoryData}>
+            <lightning-formatted-rich-text value={categoryDescription} class="category-description"></lightning-formatted-rich-text>
+            <div class="slds-grid slds-wrap"> 
+                <template for:each={categoryData} for:item="category">
+                    <div class="slds-col" key={category.id}>
+                        <button title={category.name} onclick={handleAddToCart} class="category-button">{category.name}</button>
+                    </div>
+                </template>
             </div>
-        </template> -->
+        </div>
     </div>
 </template>
