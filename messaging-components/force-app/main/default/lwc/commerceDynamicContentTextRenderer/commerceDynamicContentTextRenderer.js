@@ -51,7 +51,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
           }
         };
       }
-
+      
       this.staticText = this.entryPayload?.abstractMessage?.staticContent;
 
       if (typeof this.staticText?.text === "string" && this.staticText?.text.includes("contentType")) {
@@ -103,7 +103,7 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
    * Returns the class name of the message bubble.
    * @returns {string}
    */
-   get generateMessageBubbleClassname() {
+  get generateMessageBubbleClassname() {
     if (this.isSupportedSender()) {
       return `${MESSAGE_CONTENT_CLASS} ${this.sender}`;
     } else {
