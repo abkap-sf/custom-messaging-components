@@ -3,7 +3,7 @@
         <div class="slds-col slds-m-bottom_xx-small">
             <lightning-formatted-rich-text value={productDescription} class="product-description"></lightning-formatted-rich-text>
         </div>
-        <template class="slds-col" for:each={productData} for:item="product">
+        <template class="slds-col" lwc:if={productData} for:each={productData} for:item="product">
             <div class="slds-grid product-card slds-m-bottom_x-small" key={product.name}>
                 <div class="slds-col slds-size_2-of-5">
                     <img src={product.imageUrl} alt={product.name} class="product-image"/>    

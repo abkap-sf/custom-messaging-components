@@ -65,6 +65,9 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
       if (this.isProductRecommendations && this.parsedText?.productsDetails) {
         this.productData = this.parsedText.productsDetails.products;
         this.productDescription = this.parsedText.productsDetails.description;
+      }
+
+      if(this.isProductRecommendations && this.parsedText?.categoryDetails) {
         this.categoryData = this.parsedText.categoryDetails.categories;
         this.categoryDescription = this.parsedText.categoryDetails.description;
       }
