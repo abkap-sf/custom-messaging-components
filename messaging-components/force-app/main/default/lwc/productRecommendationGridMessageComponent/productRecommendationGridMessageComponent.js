@@ -2,9 +2,9 @@ import { LightningElement, api } from 'lwc';
 
 export default class ProductRecommendationGridMessageComponent extends LightningElement {
     @api productData = [];
-    @api productDescription = '';
+    @api productsDescription = '';
     @api categoryData = [];
-    @api categoryDescription = '';
+    @api categoriesDescription = '';
 
     handleAddToCart(event) {
         const productName = event.target.name;

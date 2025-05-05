@@ -1,16 +1,16 @@
 <template>
     <div class={generateMessageBubbleClassname}>
-        <template if:true={isProductRecommendations}>
+        <template lwc:if={isProductRecommendations}>
             <c-product-recommendation-grid-message-component
                 product-data={productData}
-                product-description={productDescription}
+                products-description={productsDescription}
                 category-data={categoryData}
-                category-description={categoryDescription}
+                categories-description={categoriesDescription}
                 onaddtocart={handleAddToCart}
                 onselectcategory={handleSelectCategory}>
             </c-product-recommendation-grid-message-component>
         </template>
-        <template if:false={isProductRecommendations}>
+        <template lwc:else>
             <lightning-formatted-rich-text value={textContent}></lightning-formatted-rich-text>
         </template>
     </div>

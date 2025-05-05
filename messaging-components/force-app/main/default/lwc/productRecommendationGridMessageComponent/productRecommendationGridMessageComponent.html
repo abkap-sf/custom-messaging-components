@@ -1,19 +1,19 @@
 <template>
     <div class="slds-grid slds-grid_vertical">
         <div class="slds-col slds-m-bottom_xx-small">
-            <lightning-formatted-rich-text value={productDescription} class="product-description"></lightning-formatted-rich-text>
+            <p class="products-description">{productsDescription}</p>
         </div>
         <template class="slds-col" lwc:if={productData} for:each={productData} for:item="product">
             <div class="slds-grid product-card slds-m-bottom_x-small" key={product.name}>
                 <div class="slds-col slds-size_2-of-5">
                     <img src={product.imageUrl} alt={product.name} class="product-image"/>    
                 </div>
-                <div class="slds-col slds-size_3-of-5 slds-grid slds-grid_vertical slds-m-left_xx-small">
+                <div class="slds-col slds-size_3-of-5 slds-grid slds-grid_vertical slds-m-left_xx-small slds-m-top_xx-small">
                     <div class="slds-col">
-                        <strong><lightning-formatted-rich-text value={product.name} class="product-name"></lightning-formatted-rich-text></strong>
+                        <strong><p class="product-name">{product.name}</p></strong>
                     </div>
                     <div class="slds-col slds-m-right_x-small">
-                        <lightning-formatted-rich-text value={product.description} class="product-detail"></lightning-formatted-rich-text>
+                        <p class="product-description" title={product.description}>{product.description}</p>
                     </div>
                     <div class="slds-col slds-grid slds-m-top_xx-small slds-m-right_x-small slds-m-bottom_xx-small">
                         <div class="slds-col">
@@ -27,10 +27,10 @@
             </div>
         </template>
         <div class="slds-col" lwc:if={categoryData}>
-            <lightning-formatted-rich-text value={categoryDescription} class="category-description"></lightning-formatted-rich-text>
+            <p class="categories-description">{categoriesDescription}</p>
             <div class="slds-grid slds-wrap"> 
                 <template for:each={categoryData} for:item="category">
-                    <div class="slds-col" key={category.id}>
+                    <div class="slds-col slds-m-top_xx-small" key={category.id}>
                         <button name={category.name} onclick={handleSelectCategory} class="category-button">{category.name}</button>
                     </div>
                 </template>

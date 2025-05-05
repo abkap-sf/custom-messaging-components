@@ -21,18 +21,18 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
 
   contentType = '';
   productData = [];
-  productDescription = '';
+  productsDescription = '';
   categoryData = [];
-  categoryDescription = '';
+  categoriesDescription = '';
   entryPayload = {};
   staticText;
   
   processEntryPayload() {
     this.contentType = '';
     this.productData = [];
-    this.productDescription = '';
+    this.productsDescription = '';
     this.categoryData = [];
-    this.categoryDescription = '';
+    this.categoriesDescription = '';
     this.entryPayload = {};
     this.staticText = undefined;
     this.parsedText = '';
@@ -64,12 +64,12 @@ export default class CommerceDynamicContentTextRenderer extends LightningElement
 
       if (this.isProductRecommendations && this.parsedText?.productsDetails) {
         this.productData = this.parsedText.productsDetails.products;
-        this.productDescription = this.parsedText.productsDetails.description;
+        this.productsDescription = this.parsedText.productsDetails.description;
       }
 
       if(this.isProductRecommendations && this.parsedText?.categoryDetails) {
         this.categoryData = this.parsedText.categoryDetails.categories;
-        this.categoryDescription = this.parsedText.categoryDetails.description;
+        this.categoriesDescription = this.parsedText.categoryDetails.description;
       }
     } catch (error) {
       console.error('Failed to process entryPayload:', error);
