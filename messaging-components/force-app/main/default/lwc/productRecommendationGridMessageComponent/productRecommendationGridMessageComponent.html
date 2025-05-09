@@ -17,7 +17,7 @@
                     </div>
                     <div class="slds-col slds-grid slds-m-top_xx-small slds-m-right_x-small slds-m-bottom_xx-small">
                         <div class="slds-col">
-                            <strong><lightning-formatted-number value={product.price} format-style="currency" currency-code="USD" class="slds-float_left product-price"></lightning-formatted-number></strong>
+                            <strong><lightning-formatted-number value={product.price} format-style="currency" currency-code={product.currencyCode} class="slds-float_left product-price"></lightning-formatted-number></strong>
                         </div>
                         <div class="slds-col">
                             <button title="Add to Cart" onclick={handleAddToCart} name={product.name} class="slds-float_right add-to-cart">Add to Cart</button>
